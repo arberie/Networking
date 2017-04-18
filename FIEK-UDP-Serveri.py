@@ -14,3 +14,8 @@ while True:
     message, clientAddress = serverSocket.recvfrom(128)
     print("Mesazhi i pranuar: " + message.decode("ASCII"))
     mesazhi = message.decode("ASCII").split(' ')
+
+    def IP ():
+        serverSocket.sendto(str(str(clientAddress[0])).encode('utf-8'), clientAddress)
+    def PORT():
+        serverSocket.sendto(str(str(clientAddress[1])).encode('utf-8'), clientAddress)
