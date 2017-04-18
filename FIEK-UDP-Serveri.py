@@ -31,7 +31,6 @@ while True:
     def KENO():
         keno=[random.randint(1,80) for i in range(20)]
         serverSocket.sendto(str(keno).encode('utf-8'), clientAddress)
-   
     def FAKTORIEL(opsioni):
          f=1
         if(opsioni==""):
@@ -48,4 +47,32 @@ while True:
               f = f* numri
               numri = numri - 1 
          serverSocket.sendto(str("Faktorieli i numrit " + str(opsioni) + " eshte " + str(f) + ".").encode('ASCII'), clientAddress)
-           
+            def KODI(plaintexti, hapi):
+        tekstiEnkriptuar = []
+        uppercase =['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']  
+        lowercase = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+        for shkronja in plaintexti:
+            if shkronja in uppercase:
+                indeksi = uppercase.index(shkronja)
+                indeksiPlus = indeksi + int(hapi) % 26
+                shkronjaRe = uppercase[indeksiPlus]
+                tekstiEnkriptuar.append(shkronjaRe)
+            elif shkronja in lowercase:
+                indeksi = lowercase.index(shkronja)
+                indeksiPlus = indeksi + int(hapi) % 26
+                shkronjaRe = lowercase[indeksiPlus]
+                tekstiEnkriptuar.append(shkronjaRe)
+        serverSocket.sendto(str(tekstiEnkriptuar).encode('utf-8'), clientAddress)
+
+    def PRIMAR(p) :
+        n = int(p)
+        if (n == 1):
+            return serverSocket.sendto((str(n) + " nuk eshte numer i thjeshte.").encode('utf-8'), clientAddress)
+        elif (n == 2):
+            return serverSocket.sendto((str(n) +" eshte numer i thjeshte.").encode('utf-8'), clientAddress)
+        else:
+            for x in range (2,n):
+                if (n%x == 0):
+                     return serverSocket.sendto((str(n) + " nuk eshte numer i thjeshte.").encode('utf-8'), clientAddress)
+            return serverSocket.sendto((str(n) + " eshte numer i thjeshte.").encode('utf-8'), clientAddress)
+
