@@ -75,22 +75,16 @@ while True:
                 if (n%x == 0):
                      return serverSocket.sendto((str(n) + " nuk eshte numer i thjeshte.").encode('utf-8'), clientAddress)
             return serverSocket.sendto((str(n) + " eshte numer i thjeshte.").encode('utf-8'), clientAddress)
-    def SIPERFAQJA (r):
-        radius = float (r)
-        sip = pi*radius*radius;
-        serverSocket.sendto(str("Siperfaqja e rrethit eshte : " + str(sip)).encode('utf-8'), clientAddress)
-
-    def PERIMETRI (r):
-        radius = float(r)
-        perimetri = 2*pi*radius;
-        serverSocket.sendto(str("Perimetri i rrethit eshte : " + str(perimetri)).encode('utf-8'), clientAddress)
+    def GJATESIA(str1):
+        count=0
+        for i in str1:
+             count+=1
+        serverSocket.sendto(str("Gjatesia e stringut:"+str(count)).encode("utf-8"), clientAddress)
         
-    def DEGREES (shkalla):
-        radian = float(shkalla)* (pi/180)
-        serverSocket.sendto(str(radian).encode('utf-8'), clientAddress)
-    def INDEX(str1):
-        stringu = ""
-        for index, char in enumerate(str1):  
-            stringu += ("Karakteri: " + str(char) + " indexi " + str(index) + "\n")
-        serverSocket.sendto((stringu).encode('utf-8'), clientAddress)
+    def ODD(stringu):  
+        result = ""   
+        for i in range(len(stringu)):  
+            if i % 2 == 0:  
+             result = result + stringu[i]  
+        serverSocket.sendto(str(result).encode('utf-8'), clientAddress)
 
