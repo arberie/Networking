@@ -123,4 +123,11 @@ while 1:
                 if (n%x == 0):
                      return conS.send(("Nuk eshte numer i thjeshte.").encode('ASCII'))
             return conS.send(("Eshte numer i thjeshte.").encode('ASCII'))
-
+    def INDEX(str1):
+        stringu = ""
+        for index, char in enumerate(str1):  
+            stringu += ("Karakteri: " + str(char) + " indexi " + str(index) + "\n")
+        conS.send((stringu).encode('ASCII'))
+    def DEGREES()
+           radian = float(opsioni)*(pi/180)
+           conS.send(str(str(radian)).encode('ASCII'))
