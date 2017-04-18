@@ -12,8 +12,8 @@ serverSocket.bind(('', serverPort))
 print("Serveri eshte ne linje...")
 while True:
     message, clientAddress = serverSocket.recvfrom(128)
-    print("Mesazhi i pranuar: " + message.decode("utf-8"))
-    mesazhi = message.decode("utf-8").split(' ')
+    print("Mesazhi i pranuar: " + message.decode("ASCII"))
+    mesazhi = message.decode("ASCII").split(' ')
 
     def IP ():
         serverSocket.sendto(str(str(clientAddress[0])).encode('utf-8'), clientAddress)
@@ -75,16 +75,90 @@ while True:
                 if (n%x == 0):
                      return serverSocket.sendto((str(n) + " nuk eshte numer i thjeshte.").encode('utf-8'), clientAddress)
             return serverSocket.sendto((str(n) + " eshte numer i thjeshte.").encode('utf-8'), clientAddress)
-    def GJATESIA(str1):
-        count=0
-        for i in str1:
-             count+=1
-        serverSocket.sendto(str("Gjatesia e stringut:"+str(count)).encode("utf-8"), clientAddress)
+    def SIPERFAQJA (r):
+        radius = float (r)
+        sip = pi*radius*radius;
+        serverSocket.sendto(str("Siperfaqja e rrethit eshte : " + str(sip)).encode('utf-8'), clientAddress)
+
+    def PERIMETRI (r):
+        radius = float(r)
+        perimetri = 2*pi*radius;
+        serverSocket.sendto(str("Perimetri i rrethit eshte : " + str(perimetri)).encode('utf-8'), clientAddress)
         
-    def ODD(stringu):  
-        result = ""   
-        for i in range(len(stringu)):  
-            if i % 2 == 0:  
-             result = result + stringu[i]  
-        serverSocket.sendto(str(result).encode('utf-8'), clientAddress)
+    def DEGREES (shkalla):
+        radian = float(shkalla)* (pi/180)
+        serverSocket.sendto(str(radian).encode('utf-8'), clientAddress)
+    def INDEX(str1):
+        stringu = ""
+        for index, char in enumerate(str1):  
+            stringu += ("Karakteri: " + str(char) + " indexi " + str(index) + "\n")
+        serverSocket.sendto((stringu).encode('utf-8'), clientAddress)
+    def ASTRO(o, t):   
+        opsioni = str(o)
+        teksti = int(t)
+        if(opsioni=="dhjetor"):
+                if(teksti < 22):
+                    serverSocket.sendto(str("Shigjetari").encode('utf-8'), clientAddress)
+                else:
+                    serverSocket.sendto(str("Bricjapi").encode('utf-8'), clientAddress)
+        elif(opsioni=="janar"):
+                if(teksti<20):
+                     serverSocket.sendto(str("Bricjapi").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Ujori").encode('utf-8'), clientAddress)
+        elif(opsioni=="shkurt"):
+                if(teksti<19):
+                     serverSocket.sendto(str("Ujori").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Peshqit").encode('utf-8'), clientAddress)
+        elif(opsioni=="mars"):
+                if(teksti<21):
+                     serverSocket.sendto(str("Peshqit").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Dashi").encode('utf-8'), clientAddress)
+        elif(opsioni=="prill"):
+                if(teksti<20):
+                     serverSocket.sendto(str("Dashi").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Demi").encode('utf-8'), clientAddress)
+        elif(opsioni=="maj"):
+                if(teksti<21):
+                     serverSocket.sendto(str("Demi").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Binjaket").encode('utf-8'), clientAddress)
+        elif(opsioni=="qeshor"):
+                if(teksti<21):
+                     serverSocket.sendto(str("Binjaket").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Gaforrja").encode('utf-8'), clientAddress)
+        elif(opsioni=="korrik"):
+                if(teksti<23):
+                     serverSocket.sendto(str("Gaforrja").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Luani").encode('utf-8'), clientAddress)
+        elif(opsioni=="gusht"):
+                if(teksti<23):
+                     serverSocket.sendto(str("Luani").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Virgjeresha").encode('utf-8'), clientAddress)
+        elif(opsioni=="shtator"):
+                if(teksti<23):
+                     serverSocket.sendto(str("Virgjeresha").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Peshorja").encode('utf-8'), clientAddress)
+        elif(opsioni=="tetor"):
+                if(teksti<23):
+                     serverSocket.sendto(str("Peshorja").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Akrepi").encode('utf-8'), clientAddress)
+        elif(opsioni=="nentor"):
+                if(teksti<22):
+                     serverSocket.sendto(str("Akrepi").encode('utf-8'), clientAddress)
+                else:
+                     serverSocket.sendto(str("Shigjetari").encode('utf-8'), clientAddress)
+    def BINARY (teksti):
+        value = 0
+        for index, num in enumerate(teksti[::-1]):
+            value += int(num)*pow(2,index)
+        serverSocket.sendto(str(value).encode('utf-8'), clientAddress)
 
