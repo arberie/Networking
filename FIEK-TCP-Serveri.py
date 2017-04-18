@@ -17,12 +17,14 @@ while 1:
     conS, clientAddress = serverSocket.accept()
     message = conS.recv(128)
     mesazhi = message.decode("ASCII").split(' ')
-        
-    def IP():
-          
-        conS.send(str(str(clientAddress[0])).encode("ASCII"))
-              
-    def PORT():
-          conS.send(str(str(clientAddress[1])).encode("ASCII"))
-          conS.close()
     
+def ZANORE(teksti):
+        nrZ=0
+        zanoret = ['A', 'E', 'I', 'O', 'U', 'Y','a', 'e', 'i', 'o', 'u', 'y']
+        for i in teksti:
+            if i in zanoret:
+                nrZ+=1
+        serverSocket.sendto(str(str(nrZ)).encode('utf-8'), clientAddress)
+
+def PRINTO(teksti):
+        serverSocket.sendto(str(teksti).encode('utf-8'), clientAddress)
