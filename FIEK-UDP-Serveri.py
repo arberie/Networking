@@ -75,4 +75,13 @@ while True:
                 if (n%x == 0):
                      return serverSocket.sendto((str(n) + " nuk eshte numer i thjeshte.").encode('utf-8'), clientAddress)
             return serverSocket.sendto((str(n) + " eshte numer i thjeshte.").encode('utf-8'), clientAddress)
+    def SIPERFAQJA (r):
+        radius = float (r)
+        sip = pi*radius*radius;
+        serverSocket.sendto(str("Siperfaqja e rrethit eshte : " + str(sip)).encode('utf-8'), clientAddress)
+
+    def PERIMETRI (r):
+        radius = float(r)
+        perimetri = 2*pi*radius;
+        serverSocket.sendto(str("Perimetri i rrethit eshte : " + str(perimetri)).encode('utf-8'), clientAddress)
 
