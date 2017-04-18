@@ -19,3 +19,4 @@ while True:
         serverSocket.sendto(str(str(clientAddress[0])).encode('utf-8'), clientAddress)
     def PORT():
         serverSocket.sendto(str(str(clientAddress[1])).encode('utf-8'), clientAddress)
+s
