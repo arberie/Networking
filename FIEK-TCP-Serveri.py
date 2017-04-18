@@ -18,7 +18,7 @@ while 1:
     message = conS.recv(128)
     mesazhi = message.decode("ASCII").split(' ')
     
-def ZANORE(teksti):
+    def ZANORE(teksti):
         nrZ=0
         zanoret = ['A', 'E', 'I', 'O', 'U', 'Y','a', 'e', 'i', 'o', 'u', 'y']
         for i in teksti:
@@ -26,5 +26,9 @@ def ZANORE(teksti):
                 nrZ+=1
         serverSocket.sendto(str(str(nrZ)).encode('utf-8'), clientAddress)
 
-def PRINTO(teksti):
+    def PRINTO(teksti):
         serverSocket.sendto(str(teksti).encode('utf-8'), clientAddress)
+    def HOST():
+                  hosti = gethostbyname(gethostname())
+                  conS.send(str("Hosti " + hosti).encode("ASCII"))
+                  conS.close()
