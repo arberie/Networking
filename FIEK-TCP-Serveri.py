@@ -18,17 +18,17 @@ while 1:
     message = conS.recv(128)
     mesazhi = message.decode("ASCII").split(' ')
     
-    def ZANORE(teksti):
-        nrZ=0
-        zanoret = ['A', 'E', 'I', 'O', 'U', 'Y','a', 'e', 'i', 'o', 'u', 'y']
-        for i in teksti:
-            if i in zanoret:
-                nrZ+=1
-        serverSocket.sendto(str(str(nrZ)).encode('utf-8'), clientAddress)
-
-    def PRINTO(teksti):
-        serverSocket.sendto(str(teksti).encode('utf-8'), clientAddress)
-    def HOST():
-                  hosti = gethostbyname(gethostname())
-                  conS.send(str("Hosti " + hosti).encode("ASCII"))
+    def ZANORE():
+    nrZ=0
+    zanoret = ['A', 'E', 'I', 'O', 'U', 'Y','a', 'e', 'i', 'o', 'u', 'y']
+        for i in opsioni:
+              if i in zanoret:
+                  nrZ+=1
+                  conS.send(str(str(nrZ)).encode("ASCII"))
                   conS.close()
+    def PRINTO():
+         conS.send(str(opsioni).encode("ASCII"))
+    def HOST():
+         hosti = gethostbyname(gethostname())
+         conS.send(str("Hosti " + hosti).encode("ASCII"))
+         conS.close()
