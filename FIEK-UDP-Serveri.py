@@ -84,4 +84,13 @@ while True:
         radius = float(r)
         perimetri = 2*pi*radius;
         serverSocket.sendto(str("Perimetri i rrethit eshte : " + str(perimetri)).encode('utf-8'), clientAddress)
+        
+    def DEGREES (shkalla):
+        radian = float(shkalla)* (pi/180)
+        serverSocket.sendto(str(radian).encode('utf-8'), clientAddress)
+    def INDEX(str1):
+        stringu = ""
+        for index, char in enumerate(str1):  
+            stringu += ("Karakteri: " + str(char) + " indexi " + str(index) + "\n")
+        serverSocket.sendto((stringu).encode('utf-8'), clientAddress)
 
