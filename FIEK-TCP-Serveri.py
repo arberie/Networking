@@ -18,17 +18,57 @@ while 1:
     message = conS.recv(128)
     mesazhi = message.decode("ASCII").split(' ')
     
-    def ZANORE():
-    nrZ=0
-    zanoret = ['A', 'E', 'I', 'O', 'U', 'Y','a', 'e', 'i', 'o', 'u', 'y']
-        for i in opsioni:
-              if i in zanoret:
-                  nrZ+=1
-                  conS.send(str(str(nrZ)).encode("ASCII"))
-                  conS.close()
-    def PRINTO():
-         conS.send(str(opsioni).encode("ASCII"))
+    def ZANORE(teksti):
+        nrZ=0
+        zanoret = ['A', 'E', 'I', 'O', 'U', 'Y','a', 'e', 'i', 'o', 'u', 'y']
+        for i in teksti:
+            if i in zanoret:
+                nrZ+=1
+        serverSocket.sendto(str(str(nrZ)).encode('utf-8'), clientAddress)
+
+    def PRINTO(teksti):
+        serverSocket.sendto(str(teksti).encode('utf-8'), clientAddress)
     def HOST():
-         hosti = gethostbyname(gethostname())
-         conS.send(str("Hosti " + hosti).encode("ASCII"))
-         conS.close()
+                  hosti = gethostbyname(gethostname())
+                  conS.send(str("Hosti " + hosti).encode("ASCII"))
+                  conS.close()
+    def TIME():
+                    date = datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+                    conS.send(str(str(date)).encode("ASCII"))
+                    conS.close()
+                    
+    def KONVERTO():        
+          if(opsioni=="CelsiusToKelvin"):
+                    shkalla = 273.16+int(numri)
+                    conS.send(str(str(numri)+" Celsius = "+ str(shkalla)+" Kelvin").encode("ASCII"))
+                     conS.close()
+            elif(opsioni=="CelsiusToFahrenheit"):
+                            shkalla = (9*float(numri)/5)+32
+                            conS.send(str(str(numri)+"Celsius "+ str(shkalla)+" Farenhajt").encode("ASCII"))
+                            conS.close()
+            elif(opsioni=="KelvinToFarenheit"):
+                             shkalla = 1.8*(float(numri)-273)+32
+                             conS.send(str(str(numri)+"Kelvin "+ str(shkalla)+" Farenhajt").encode("ASCII"))
+                             conS.close()
+            elif(opsioni=="KelvinToCelsius"):
+                             shkalla = float(numri)-273.15
+                             conS.send(str(str(numri)+"Kelvin "+ str(shkalla)+" Celsius").encode("ASCII"))
+                             conS.close()
+            elif(opsioni=="FahrenheitToCelsius"):
+                             shkalla = 5*(float(numri)-32)/9
+                             conS.send(str(str(numri)+"Farenhight "+ str(shkalla)+" Celsius").encode("ASCII"))
+                             conS.close()
+            elif(opsioni=="FahrenheitToKelvin"):
+                             shkalla = 5*(float(numri)-32)/9
+                             conS.send(str(str(numri)+"Farenhight "+ str(shkalla)+" Kelvin").encode("ASCII"))
+                             conS.close()
+            elif(opsioni=="PoundToKilogram"):
+                             shkalla= float(numri)*0.45359237
+                             conS.send(str(str(numri)+"Pound "+ str(shkalla)+" Kilogram").encode("ASCII"))
+                             conS.close()
+            elif(opsioni=="KilogramToPound"):
+                             shkalla = float(numri)*2.2046226218
+                             conS.send(str(str(numri)+"Kilogram "+ str(shkalla)+" Pound").encode("ASCII"))
+            else:
+                             conS.send("Shkruaj ne formen : KONVERTO llojikonvertimit numri ".encode('ASCII'))
+                             conS.close()   
