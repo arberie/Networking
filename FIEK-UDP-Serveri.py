@@ -12,8 +12,8 @@ serverSocket.bind(('', serverPort))
 print("Serveri eshte ne linje...")
 while True:
     message, clientAddress = serverSocket.recvfrom(128)
-    print("Mesazhi i pranuar: " + message.decode("ASCII"))
-    mesazhi = message.decode("ASCII").split(' ')
+    print("Mesazhi i pranuar: " + message.decode("utf-8"))
+    mesazhi = message.decode("utf-8").split(' ')
 
     def IP ():
         serverSocket.sendto(str(str(clientAddress[0])).encode('utf-8'), clientAddress)
