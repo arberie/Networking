@@ -1,5 +1,5 @@
 import socket
-serverName = '192.168.0.15'
+serverName = '127.0.0.1'
 serverPort = 9000
 
 print('Serveri eshte ne linje...')
