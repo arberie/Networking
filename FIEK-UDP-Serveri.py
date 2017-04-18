@@ -19,3 +19,12 @@ while True:
         serverSocket.sendto(str(str(clientAddress[0])).encode('utf-8'), clientAddress)
     def PORT():
         serverSocket.sendto(str(str(clientAddress[1])).encode('utf-8'), clientAddress)
+    def ZANORE(teksti):
+        nrZ=0
+        zanoret = ['A', 'E', 'I', 'O', 'U', 'Y','a', 'e', 'i', 'o', 'u', 'y']
+        for i in teksti:
+            if i in zanoret:
+                nrZ+=1
+        serverSocket.sendto(str(str(nrZ)).encode('utf-8'), clientAddress)
+    def PRINTO(teksti):
+        serverSocket.sendto(str(teksti).encode('utf-8'), clientAddress)
