@@ -161,4 +161,52 @@ while True:
         for index, num in enumerate(teksti[::-1]):
             value += int(num)*pow(2,index)
         serverSocket.sendto(str(value).encode('utf-8'), clientAddress)
+    if(len(mesazhi)==1):
+        funks = mesazhi[0]
+        if (funks=="IP"):
+            IP()
+        if (funks=="PORT"):
+            PORT()
+        if (funks=="HOST"):
+            HOST()
+        if (funks=="TIME"):
+           TIME()
+        if(funks=="KENO"):
+           KENO()
+    elif(len(mesazhi)==2):
+        funks = mesazhi[0]
+        teksti = mesazhi[1]
+        if(funks=="PRINTO"):
+            PRINTO(teksti)
+        if(funks=="ZANORE"):
+            ZANORE(teksti)
+        if(funks=="FAKTORIEL"):
+            FAKTORIEL(teksti)
+        if(funks=="PRIMAR"):
+            PRIMAR(teksti)
+        if(funks=="SIPERFAQJA"):
+            SIPERFAQJA(teksti)
+        if(funks=="PERIMETRI"):
+            PERIMETRI(teksti)
+        if(funks=="REVERSE"):
+            REVERSE(teksti)
+        if(funks=="GJATESIA"):
+            GJATESIA(teksti)
+        if(funks=="BINARY"):
+            BINARY(teksti)
+        if(funks=="INDEX"):
+            INDEX(teksti)
+        if(funks=="DEGREES"):
+            DEGREES(teksti)
+
+    elif(len(mesazhi)==3):
+        funks = mesazhi[0]
+        opsioni = mesazhi[1]
+        numer = mesazhi[2]
+        if(funks=="KONVERTO"):
+            KONVERTO()
+        if(funks=="KODI"):
+            KODI(opsioni,numer)
+        if(funks=="ASTRO"):
+            ASTRO(opsioni,numer)
 
