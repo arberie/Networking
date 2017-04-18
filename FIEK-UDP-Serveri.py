@@ -31,3 +31,28 @@ while True:
     def KENO():
         keno=[random.randint(1,80) for i in range(20)]
         serverSocket.sendto(str(keno).encode('utf-8'), clientAddress)
+    def KONVERTO():
+        if(opsioni=="CelsiusToKelvin"):
+              shkalla = 273.16+int(numer)
+              serverSocket.sendto(str(str(numer)+" Celsius = "+ str(shkalla)+" Kelvin").encode('utf-8'), clientAddress)
+        elif(opsioni=="CelsiusToFahrenheit"):
+              shkalla = (9*float(numer)/5)+32
+              serverSocket.sendto(str(str(numer)+" Celsius = "+ str(shkalla)+" Farenhajt").encode('utf-8'), clientAddress)
+        elif(opsioni=="KelvinToFarenheit"):
+              shkalla = 1.8*(float(numer)-273)+32
+              serverSocket.sendto(str(str(numer)+" Kelvin = "+ str(shkalla)+" Farenhajt").encode('utf-8'), clientAddress)
+        elif(opsioni=="KelvinToCelsius"):
+              shkalla = float(numer)-273.15
+              serverSocket.sendto(str(str(numer)+" Kelvin = "+ str(shkalla)+" Celsius").encode('utf-8'), clientAddress)
+        elif(opsioni=="FahrenheitToCelsius"):
+              shkalla = 5*(float(numer)-32)/9 
+              serverSocket.sendto(str(str(numer)+" Farenhight = "+ str(shkalla)+" Celsius").encode('utf-8'), clientAddress)
+        elif(opsioni=="FahrenheitToKelvin"):
+              shkalla = 5*(float(numer)-32)/9
+              serverSocket.sendto(str(str(numer)+" Farenhight = "+ str(shkalla)+" Kelvin").encode('utf-8'), clientAddress)
+        elif(opsioni=="PoundToKilogram"):
+              shkalla= float(numer)*0.45359237
+              serverSocket.sendto(str(str(numer)+" Pound = "+ str(shkalla)+" Kilogram").encode('utf-8'), clientAddress)
+        elif(opsioni=="KilogramToPound"):
+              shkalla = float(numer)*2.204622621
+              serverSocket.sendto(str(str(numer)+" Kilogram = "+ str(shkalla)+" Pound").encode('utf-8'), clientAddress)
