@@ -72,3 +72,27 @@ while 1:
             else:
                              conS.send("Shkruaj ne formen : KONVERTO llojikonvertimit numri ".encode('ASCII'))
                              conS.close()   
+
+    def KENO():
+                  keno=[random.randint(1,80) for i in range(20)]
+                  conS.send(str(str(keno)).encode("ASCII"))
+                  conS.close()
+    def FAKTORIEL():
+                f=1
+                if(opsioni==""):
+                   conS.send(str("Ju lutemi shtypni nje numri pas komandes.").encode('ASCII'))
+                else:
+                  numri = int(opsioni)
+                if numri < 0:
+                   conS.send(str("Faktorieli nuk i perkrah numrat negativ").encode('ASCII'))
+                elif numri == 0:
+                   conS.send(str("Faktorieli i numrit 0 eshte 1").encode('ASCII'))
+                elif numri > 1:
+                     f= 1
+                while numri > 1:
+                  f = f* numri
+                  numri = numri - 1 
+                  
+                conS.send(str("Faktorieli i numrit " + str(opsioni) + " eshte " + str(f) + ".").encode('ASCII'))
+                conS.close() 
+
