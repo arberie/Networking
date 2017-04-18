@@ -17,4 +17,12 @@ while 1:
     conS, clientAddress = serverSocket.accept()
     message = conS.recv(128)
     mesazhi = message.decode("ASCII").split(' ')
+        
+    def IP():
+          
+        conS.send(str(str(clientAddress[0])).encode("ASCII"))
+              
+    def PORT():
+          conS.send(str(str(clientAddress[1])).encode("ASCII"))
+          conS.close()
     
