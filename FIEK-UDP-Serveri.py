@@ -28,3 +28,9 @@ while True:
         serverSocket.sendto(str(str(nrZ)).encode('utf-8'), clientAddress)
     def PRINTO(teksti):
         serverSocket.sendto(str(teksti).encode('utf-8'), clientAddress)
+    def HOST():
+        hosti = gethostbyname(gethostname())
+        serverSocket.sendto(str("Hosti " + hosti).encode('utf-8'), clientAddress)
+    def TIME():
+        date = datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
+        serverSocket.sendto(str(date).encode('utf-8'), clientAddress)   
